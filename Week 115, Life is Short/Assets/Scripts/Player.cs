@@ -5,21 +5,32 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    //Health is the amount of seconds your life will last.
     public float health = 3f;
+    //How many seconds of movement per health lost.
     public float healthTimer = 1f;
 
-    public Animator pulse;
-    public Text healthDisplay;
+    //Death Effect
     public GameObject death;
+    
+    //Ghost Effect
+    public GameObject ghostEffect;
 
+    //Cache
     private GameManager gm;
     private Animator anim;
     private Rigidbody2D rb;
+    
+    private Animator pulse;
+    private Text healthDisplay;
     public void Start()
     {
+        //Gameplay
         anim = GetComponent<Animator>();
         gm = GameManager.instance;
         rb = GetComponent<Rigidbody2D>();
+        
+        //Interface
         healthDisplay = GameObject.FindGameObjectWithTag("Health").GetComponent<Text>();
         pulse = GameObject.FindGameObjectWithTag("Pulse").GetComponent<Animator>();
     }
@@ -40,16 +51,27 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    //Leave behind an afterimage when getting hurt.
+    public void Ghost(){
+        GameObject ghosting = Instantiate(ghostEffect,transform.position,transform.rotation);
+        SpriteRenderer sr = ghosting.GetComponent<SpriteRenderer>();
+        sr.color = GetComponent<SpriteRenderer>().color;
+    }
+    
     //Taking damage, die if health hits 0
     public void TakeDamage(float amount)
     {     
+        //After image
+        Ghost();
+        
         health -= amount;
+             
+        //Heart pulse effect and health display
         healthDisplay.text = health.ToString();
-
-        pulse.Play("Pulse", -1, 0);
         anim.SetFloat("health", health);
-
+        pulse.Play("Pulse", -1, 0);        
+        
+        //Your HP hits zero, you die!!!
         if (health <= 0)
         {
             Death();
@@ -59,28 +81,38 @@ public class Player : MonoBehaviour
     //Death
     public void Death()
     {
+        //Death Effect
         Instantiate(death, transform.position, transform.rotation);
         Destroy(this.gameObject);
 
+        //Move on the to next life while dying
         gm.NextLife();
+        //Reset health
         healthDisplay.text = 3.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Hearts restore health
         if (collision.CompareTag("Heart"))
         {
             TakeDamage(-1f);
         }
+        
+        //Hazards make you take more damage
         if (collision.CompareTag("Hazard"))
         {
             anim.Play("Flinch");
             TakeDamage(1f);
         }
+        
+        //Some hazards are a insta-kill
         if (collision.CompareTag("End"))
         {
             TakeDamage(10000000000f);
         }
+        
+        //Reaching the goal completes the level
         if (collision.CompareTag("Goal"))
         {
             gm.CompleteLevel();
