@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
 
     public Text livesLeft;
     public Transform spawnPoint;
+
     public GameObject player;
     public GameObject gameOver;
     public GameObject levelComplete;
+
     public int lives = 2;
     public int maxLives = 2;
 
@@ -39,9 +41,6 @@ public class GameManager : MonoBehaviour
         }
 
         GameObject newPlayer = Instantiate(player, spawnPoint.position, spawnPoint.rotation);
-        SpriteRenderer sr = newPlayer.GetComponent<SpriteRenderer>();
-        Color randomColor = new Color(Random.Range(0, 255), Random.Range(0, 255), Random.Range(0, 255), 255);
-        sr.color = randomColor;
     }
 
     public void CompleteLevel()

@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     
     private Animator pulse;
     private Text healthDisplay;
+    private SpriteRenderer sr;
     public void Start()
     {
         //Gameplay
@@ -33,6 +34,10 @@ public class Player : MonoBehaviour
         //Interface
         healthDisplay = GameObject.FindGameObjectWithTag("Health").GetComponent<Text>();
         pulse = GameObject.FindGameObjectWithTag("Pulse").GetComponent<Animator>();
+
+        //Random Player Color
+        sr = GetComponent<SpriteRenderer>();
+        sr.color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1);
     }
 
     public void FixedUpdate()
@@ -54,8 +59,10 @@ public class Player : MonoBehaviour
     //Leave behind an afterimage when getting hurt.
     public void Ghost(){
         GameObject ghosting = Instantiate(ghostEffect,transform.position,transform.rotation);
-        SpriteRenderer sr = ghosting.GetComponent<SpriteRenderer>();
-        sr.color = GetComponent<SpriteRenderer>().color;
+        SpriteRenderer ghoster = ghosting.GetComponent<SpriteRenderer>();
+
+        Color color = GetComponent<SpriteRenderer>().color;
+        ghoster.color = new Color(color.r, color.g, color.b,0.4f);
     }
     
     //Taking damage, die if health hits 0
