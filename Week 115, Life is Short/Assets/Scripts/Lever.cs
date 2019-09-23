@@ -7,17 +7,21 @@ public class Lever : Logic
     public override void Activate()
     {
 
-        if (!toggled)
+        if (toggled == false)
         {
-            trigger.SetActive(false);
+            trigger.SetActive(!trigger.activeSelf);
             toggled = true;
-        }
-        if (toggled)
+        } else if (toggled == true)
         {
-            trigger.SetActive(true);
+            trigger.SetActive(!trigger.activeSelf);
             toggled = false;
         }
 
         base.Activate();
+    }
+
+    public override void OnTriggerExit2D(Collider2D collision)
+    {
+       // base.OnTriggerExit2D(collision);
     }
 }

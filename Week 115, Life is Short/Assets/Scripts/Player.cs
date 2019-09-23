@@ -118,12 +118,22 @@ public class Player : MonoBehaviour
         {
             TakeDamage(10000000000f);
         }
-        
+
+        //Key
+        if (collision.CompareTag("Key"))
+        {
+            gm.keys += 1;
+            Destroy(collision.gameObject);  
+        }
+
         //Reaching the goal completes the level
         if (collision.CompareTag("Goal"))
         {
-            gm.CompleteLevel();
-            Destroy(this.gameObject);
+            if(gm.keys >= gm.requiredKeys)
+            {
+                gm.CompleteLevel();
+                Destroy(this.gameObject);
+            }
         }
     }
 }

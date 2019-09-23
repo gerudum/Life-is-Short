@@ -23,7 +23,7 @@ public class Logic : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Object"))
         {
             Activate();
         }
@@ -31,7 +31,7 @@ public class Logic : MonoBehaviour
 
     public virtual void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Object"))
         {
             Activate();
         }

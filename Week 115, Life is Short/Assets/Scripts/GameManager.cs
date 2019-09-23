@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameOver;
     public GameObject levelComplete;
 
+    public int keys = 0;
+    public int requiredKeys = 0;
     public int lives = 2;
     public int maxLives = 2;
 
