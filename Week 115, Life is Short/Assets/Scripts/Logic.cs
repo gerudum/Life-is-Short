@@ -21,7 +21,7 @@ public class Logic : MonoBehaviour
         anim.SetBool("isActive", toggled);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -29,7 +29,7 @@ public class Logic : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {

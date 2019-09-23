@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lever : MonoBehaviour
+public class Lever : Logic
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Activate()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (!toggled)
+        {
+            trigger.SetActive(false);
+            toggled = true;
+        }
+        if (toggled)
+        {
+            trigger.SetActive(true);
+            toggled = false;
+        }
+
+        base.Activate();
     }
 }

@@ -20,10 +20,18 @@ public class PlayerController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        float movementX = Input.GetAxisRaw("Horizontal");
-        float movementY = Input.GetAxisRaw("Vertical");
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var dir = mousePos - transform.position;
+        dir.z = 0;
+        dir = dir.normalized;
 
-        Vector2 movement = new Vector2(movementX * speed, movementY * speed);
-        rb.velocity = movement;
+        if (Input.GetMouseButton(0))
+        {
+            rb.velocity = dir * speed;
+        } else
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
+        
     }
 }
