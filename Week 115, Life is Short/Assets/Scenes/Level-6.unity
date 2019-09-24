@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3363,8 +3363,11 @@ MonoBehaviour:
   player: {fileID: 1893204154340943500, guid: 8a2cb49840f023243a055a8a008b0875, type: 3}
   gameOver: {fileID: 1769287834}
   levelComplete: {fileID: 737803425}
+  keys: 0
+  requiredKeys: 0
   lives: 2
   maxLives: 2
+  levelIndex: 6
 --- !u!4 &201390301
 Transform:
   m_ObjectHideFlags: 0

@@ -27,9 +27,23 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        NextLife();
+        string level = SceneManager.GetActiveScene().name;
+        if (level.Contains("Level") && !level.Contains("Select"))
+        {
+            NextLife();
+        }
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Restart();
+        } else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            LoadLevel("Level-Select");
+        }
+    }
     public void NextLife()
     {
         lives -= 1;
@@ -45,9 +59,11 @@ public class GameManager : MonoBehaviour
         GameObject newPlayer = Instantiate(player, spawnPoint.position, spawnPoint.rotation);
     }
 
+    public int levelIndex;
     public void CompleteLevel()
     {
         levelComplete.SetActive(true);
+        PlayerPrefs.SetInt("Unlocked_" + levelIndex.ToString(), 1);
     }
 
     public void GameOver()
