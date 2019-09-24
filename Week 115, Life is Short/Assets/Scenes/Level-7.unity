@@ -1493,6 +1493,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8305664290766989880, guid: 1a924d907faf1ff47b3ffdaa2f4c359a,
+        type: 3}
+      propertyPath: m_Name
+      value: Key (1)
+      objectReference: {fileID: 0}
     - target: {fileID: -5163063147226613973, guid: 1a924d907faf1ff47b3ffdaa2f4c359a,
         type: 3}
       propertyPath: m_ShapePath.Array.size
@@ -1537,11 +1542,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ShapePath.Array.data[3].y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8305664290766989880, guid: 1a924d907faf1ff47b3ffdaa2f4c359a,
-        type: 3}
-      propertyPath: m_Name
-      value: Key (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8305664290766989884, guid: 1a924d907faf1ff47b3ffdaa2f4c359a,
         type: 3}
@@ -5940,7 +5940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1572004308
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6008,7 +6008,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Clear each level by reaching the yellow orb!
+  m_Text: Collect the keys to proceed.
 --- !u!222 &1572004311
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6899,6 +6899,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8305664290766989880, guid: 1a924d907faf1ff47b3ffdaa2f4c359a,
+        type: 3}
+      propertyPath: m_Name
+      value: Key
+      objectReference: {fileID: 0}
     - target: {fileID: -5163063147226613973, guid: 1a924d907faf1ff47b3ffdaa2f4c359a,
         type: 3}
       propertyPath: m_ShapePath.Array.size
@@ -6943,11 +6948,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ShapePath.Array.data[3].y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8305664290766989880, guid: 1a924d907faf1ff47b3ffdaa2f4c359a,
-        type: 3}
-      propertyPath: m_Name
-      value: Key
       objectReference: {fileID: 0}
     - target: {fileID: 8305664290766989884, guid: 1a924d907faf1ff47b3ffdaa2f4c359a,
         type: 3}
