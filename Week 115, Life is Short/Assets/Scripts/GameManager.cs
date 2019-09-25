@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
 
         if(lives < 0)
         {
+            AudioManager.instance.PlaySound("Failure");
             Debug.Log("You Failed!");
             GameOver();
             return;
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
     public int levelIndex;
     public void CompleteLevel()
     {
+        AudioManager.instance.PlaySound("Goal");
         levelComplete.SetActive(true);
         PlayerPrefs.SetInt("Unlocked_" + levelIndex.ToString(), 1);
     }

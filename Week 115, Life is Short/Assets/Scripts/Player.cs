@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
     {     
         //After image
         Ghost();
-        
+
         health -= amount;
              
         //Heart pulse effect and health display
